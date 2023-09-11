@@ -31,23 +31,19 @@ app.post("/crypto", (req,res) => {
 })
 
 app.post("/swap", (req,res)=> {
-  res.send(data);
+  const { search } = req.body
+  console.log(search[0])
+  let input = data.find(ele => ele.currency === search[0].currency)
+  let output = data.find(ele => ele.currency === search[1].currency)
+  let inputAmountUSD = parseInt(search[0].amt) * input.price
+  let outputAmount = inputAmountUSD/output.price
+  res.send(outputAmount.toString());
 })
 
 app.listen(port, () =>{
   console.log(`Express app listening on port ${port}!`);
 })
 
-function filterByCurrencyName(data, letters) {
-  if (!letters) {
-    return data;
-  }
-  return data.filter((item) => {
-    const currencyName = item.currency.toLowerCase();
-    return letters
-      .split("")
-      .every((letter) => currencyName.includes(letter.toLowerCase()));
-  });
-}
+
 
 

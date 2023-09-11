@@ -1,11 +1,12 @@
 import React from "react";
+import axios from "axios";
 import { useState, useEffect } from "react";
 import Search from "./Search";
 import "./Form.css"
 
 const Form = () => {
   const [inputAmt, setInputAmt] = useState("0")
-  const [outputAmt, setOutputAmt] = useState("0");
+  const [outputAmt, setOutputAmt] = useState("");
   const [inputCurr, setInputCurr] = useState("")
   const [outputCurr, setOutputCurr] = useState("");
 
@@ -15,8 +16,18 @@ const Form = () => {
     setInputAmt(value);
   };
 
-  const setOutput = (e) => {
-    setOutputAmt(10)
+  const setOutput = async (e) => {
+    e.preventDefault()
+    const data = await axios
+      .post(`http://localhost:8080/swap`, {
+        search: [
+          { currency: inputCurr, amt: inputAmt },
+          { currency: outputCurr, amt: outputAmt },
+        ],
+      })
+      .then((res) => {
+        setOutputAmt(res.data);
+      });
   }
   return (
     <>
@@ -29,17 +40,31 @@ const Form = () => {
             value={inputAmt}
             onChange={inputAmtHandler}
           />
-          <p>{inputCurr}</p>
+          {inputCurr && (
+            <img
+              className="logo"
+              src={require(`../tokens/${inputCurr}.svg`)}
+              alt={`${inputCurr}`}
+            />
+          )}
+          {inputCurr && <span>{inputCurr}</span>}
           <Search setCurrency={setInputCurr} />
         </div>
         <div className="input">
           <label for="output-amount">Amount to receive</label>
           <input id="output-amount" value={outputAmt} />
-          <p>{outputCurr}</p>
+          {outputCurr && (
+            <img
+              className="logo"
+              src={require(`../tokens/${outputCurr}.svg`)}
+              alt={`${outputCurr}`}
+            />
+          )}
+          {outputCurr && <span>{outputCurr}</span>}
           <Search setCurrency={setOutputCurr} />
         </div>
 
-        <button onClick={setOutput}>CONFIRM SWAP</button>
+        <button onClick={setOutput} disabled={inputCurr === "" || outputCurr === ""}>CONFIRM SWAP</button>
       </form>
     </>
   );
