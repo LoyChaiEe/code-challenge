@@ -1,9 +1,14 @@
+
 .ul-no-bullet{
-  height:200px;
+  height:100px;
   list-style-type: none;
   overflow-x: hidden;
   overflow-y: auto;
   text-align: center;
+  margin-block-start: 0px;
+  padding-inline-start: 0px;
+  margin-block-end: 0px;
+  border: red
 }
 
 .logo{
@@ -14,4 +19,11 @@
 .crypto-item{
   display: flex;
   align-items: center;
+  background-color: #e0faa4;
+  width: 100%;
+  padding-left: 10px;
+}
+
+.cryptoListItem{
+  margin-left: 10px;
 }

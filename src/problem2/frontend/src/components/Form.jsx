@@ -1,8 +1,9 @@
 import React from "react";
 import axios from "axios";
-import { useState, useEffect } from "react";
+import { useState} from "react";
 import Search from "./Search";
 import "./Form.css"
+import logo from "../images/switcheo.png"
 
 const Form = () => {
   const [inputAmt, setInputAmt] = useState("0")
@@ -31,40 +32,54 @@ const Form = () => {
   }
   return (
     <>
+      <h1>CRYPTOSWAPPER</h1>
       <form className="Form" onSubmit={() => !1}>
-        <h5>Swap</h5>
-        <div className="input">
-          <label for="input-amount">Amount to send</label>
-          <input
-            id="input-amount"
-            value={inputAmt}
-            onChange={inputAmtHandler}
-          />
-          {inputCurr && (
-            <img
-              className="logo"
-              src={require(`../tokens/${inputCurr}.svg`)}
-              alt={`${inputCurr}`}
+        <div>
+          <div className="input">
+            <input
+              id="input-amount"
+              value={inputAmt}
+              onChange={inputAmtHandler}
+              placeholder="Input"
             />
-          )}
-          {inputCurr && <span>{inputCurr}</span>}
+          </div>
+          <div className="display">
+            {inputCurr && (
+              <img
+                className="logo"
+                src={require(`../tokens/${inputCurr}.svg`)}
+                alt={`${inputCurr}`}
+              />
+            )}
+            {inputCurr && <span>{inputCurr}</span>}
+          </div>
           <Search setCurrency={setInputCurr} />
         </div>
-        <div className="input">
-          <label for="output-amount">Amount to receive</label>
-          <input id="output-amount" value={outputAmt} />
-          {outputCurr && (
-            <img
-              className="logo"
-              src={require(`../tokens/${outputCurr}.svg`)}
-              alt={`${outputCurr}`}
-            />
-          )}
-          {outputCurr && <span>{outputCurr}</span>}
+        <div>
+          <img
+            className="switcheo"
+            src={logo}
+            alt="switcheo"
+            onClick={setOutput}
+            disabled={inputCurr === "" || outputCurr === ""}
+          />
+        </div>
+        <div>
+          <div className="input">
+            <input id="output-amount" value={outputAmt} placeholder="Amount" />
+          </div>
+          <div className="display">
+            {outputCurr && (
+              <img
+                className="logo"
+                src={require(`../tokens/${outputCurr}.svg`)}
+                alt={`${outputCurr}`}
+              />
+            )}
+            {outputCurr && <span>{outputCurr}</span>}
+          </div>
           <Search setCurrency={setOutputCurr} />
         </div>
-
-        <button onClick={setOutput} disabled={inputCurr === "" || outputCurr === ""}>CONFIRM SWAP</button>
       </form>
     </>
   );

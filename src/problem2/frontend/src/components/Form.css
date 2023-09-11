@@ -1,6 +1,6 @@
 .Form {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
   min-width: 360px;
@@ -8,5 +8,64 @@
 }
 
 .input{
-  width: 90%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+.switcheo{
+  width: 70px;
+  margin: 30px;
+  transition: transform .8s ease-in-out;
+  margin-top: -100px;
+}
+
+.switcheo:hover{
+  transform:rotate(45deg);
+}
+
+#input-amount{
+  justify-content: space-between;
+  height: 50px;
+  width: 350px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #345c4c;
+  color: #e0faa4;
+  border-width: 3px;
+  border-color: #345c4c;
+  border-radius: 5px;
+  font-size: 30px;
+  padding: 10px 4px;
+}
+
+#output-amount{
+  justify-content: space-between;
+  height: 50px;
+  width: 350px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  background-color: #345c4c;
+  color: #e0faa4;
+  border-width: 3px;
+  border-color: #345c4c;
+  border-radius: 5px;
+  font-size: 30px;
+  padding: 10px 4px;
+}
+
+.logo{
+  width: 50px;
+}
+
+span{
+  text-align: center;
+}
+
+.display{
+  display: flex;
+  align-items: center;
+}
+
+

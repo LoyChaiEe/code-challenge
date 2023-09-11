@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import List from "./List";
 import "./Search.css"
-import { useThemeProps } from "@mui/material";
 
 const Search = (props) => {
   const [inputText, setInputText] = useState("");

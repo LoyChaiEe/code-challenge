@@ -20,7 +20,7 @@ const List = (props) => {
     <ul className="ul-no-bullet">
       {cryptoData.map((item) => (
         <>
-          <li key={item.currency}>
+          <li className="cryptoListItem" key={item.currency}>
             <div className="crypto-item" onClick={() => {
               props.setCurrency(item.currency)
               //reset
