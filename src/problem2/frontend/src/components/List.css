@@ -1,0 +1,17 @@
+.ul-no-bullet{
+  height:200px;
+  list-style-type: none;
+  overflow-x: hidden;
+  overflow-y: auto;
+  text-align: center;
+}
+
+.logo{
+  width: 30px;
+  height: 30px;
+}
+
+.crypto-item{
+  display: flex;
+  align-items: center;
+}

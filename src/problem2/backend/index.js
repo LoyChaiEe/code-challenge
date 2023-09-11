@@ -11,13 +11,23 @@ const port = 8080
 app.use(cors("*"));
 app.use(express.json())
 
-app.get("/cryptotest", (req, res) => {
-  res.send(data);
-});
 
 
 app.post("/crypto", (req,res) => {
-  res.send(data)
+  const { search } = req.body;
+  console.log("helloe", search)
+  if(!search){
+    res.send([])
+  }
+  else{
+    const filteredData = data.filter((ele) => {
+      const currencyName = ele.currency.toLowerCase();
+      return search
+        .split("")
+        .every((letter) => currencyName.includes(letter.toLowerCase()));
+    });
+    res.send(filteredData);
+  }
 })
 
 app.post("/swap", (req,res)=> {
@@ -27,5 +37,17 @@ app.post("/swap", (req,res)=> {
 app.listen(port, () =>{
   console.log(`Express app listening on port ${port}!`);
 })
+
+function filterByCurrencyName(data, letters) {
+  if (!letters) {
+    return data;
+  }
+  return data.filter((item) => {
+    const currencyName = item.currency.toLowerCase();
+    return letters
+      .split("")
+      .every((letter) => currencyName.includes(letter.toLowerCase()));
+  });
+}
 
 

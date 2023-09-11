@@ -2,8 +2,9 @@ import React, { useState } from "react";
 import TextField from "@mui/material/TextField";
 import List from "./List";
 import "./Search.css"
+import { useThemeProps } from "@mui/material";
 
-const Search = () => {
+const Search = (props) => {
   const [inputText, setInputText] = useState("");
   let inputHandler = (e) => {
     //convert input text to lower case
@@ -15,6 +16,7 @@ const Search = () => {
     <>
       <div className="search">
         <TextField
+          value={inputText}
           id="outlined-basic"
           onChange={inputHandler}
           variant="outlined"
@@ -22,7 +24,11 @@ const Search = () => {
           label="Search"
         />
       </div>
-      <List input={inputText} />
+      <List
+        input={inputText}
+        setCurrency={props.setCurrency}
+        clear={setInputText}
+      />
     </>
   );
 };

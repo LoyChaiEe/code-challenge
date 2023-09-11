@@ -22,7 +22,7 @@ const data = [
     price: 36.345114372881355,
   },
   {
-    currency: "STEVMOS",
+    currency: "stEVMOS",
     date: "2023-08-29T07:10:40.000Z",
     price: 0.07276706779661017,
   },
@@ -32,7 +32,7 @@ const data = [
     price: 0.40955638983050846,
   },
   {
-    currency: "RATOM",
+    currency: "rATOM",
     date: "2023-08-29T07:10:40.000Z",
     price: 10.250918915254237,
   },
@@ -62,8 +62,7 @@ const data = [
     price: 0.49548589830508477,
   },
   { currency: "KUJI", date: "2023-08-29T07:10:45.000Z", price: 0.675 },
-  { currency: "STOSMO", date: "2023-08-29T07:10:45.000Z", price: 0.431318 },
-  { currency: "USDC", date: "2023-08-29T07:10:40.000Z", price: 0.989832 },
+  { currency: "stOSMO", date: "2023-08-29T07:10:45.000Z", price: 0.431318 },
   { currency: "axlUSDC", date: "2023-08-29T07:10:40.000Z", price: 0.989832 },
   {
     currency: "ATOM",
@@ -71,7 +70,7 @@ const data = [
     price: 7.186657333333334,
   },
   {
-    currency: "STATOM",
+    currency: "stATOM",
     date: "2023-08-29T07:10:45.000Z",
     price: 8.512162050847458,
   },
@@ -82,7 +81,7 @@ const data = [
   },
   { currency: "rSWTH", date: "2023-08-29T07:10:40.000Z", price: 0.00408771 },
   {
-    currency: "STLUNA",
+    currency: "stLUNA",
     date: "2023-08-29T07:10:40.000Z",
     price: 0.44232210169491526,
   },
